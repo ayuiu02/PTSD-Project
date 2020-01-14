@@ -1,7 +1,9 @@
 package app.ayuisnaini.android.ptsdproject;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 public class Model {
-    String author, content, title, summary, image, date;
+    String author, title, summary, image, date;
 
     public Model() {
 
@@ -13,14 +15,6 @@ public class Model {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public String getTitle() {
@@ -54,5 +48,4 @@ public class Model {
     public void setDate(String date) {
         this.date = date;
     }
-
 }

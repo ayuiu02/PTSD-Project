@@ -10,13 +10,28 @@ import com.squareup.picasso.Picasso;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
-
     View mView;
 
     public ViewHolder(View itemView) {
         super(itemView);
 
         mView = itemView;
+
+        itemView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                mClickOnListener.onItemClick(view, getAdapterPosition());
+            }
+        });
+
+        itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mClickOnListener.onItemLongClick(view, getAdapterPosition());
+                return true;
+            }
+        });
 
     }
 
@@ -33,4 +48,16 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mDate.setText(date);
         Picasso.get().load(image).into(mImage);
     }
+
+    private ViewHolder.clickOnListener mClickOnListener;
+
+    public interface clickOnListener{
+        void onItemClick (View view, int position);
+        void onItemLongClick (View view, int position);
+    }
+
+    public void setOnClickListener (ViewHolder.clickOnListener clickListener){
+        mClickOnListener = clickListener;
+    }
+
 }

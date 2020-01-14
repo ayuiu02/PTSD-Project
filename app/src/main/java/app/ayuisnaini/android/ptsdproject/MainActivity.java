@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import androidx.cardview.widget.CardView;
 
@@ -20,6 +25,32 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         articleCard.setOnClickListener(this);
         screeningCard.setOnClickListener(this);
+
+        //Date and clock
+        TextView textViewDate = findViewById(R.id.tvDate);
+        TextView textViewClock = findViewById(R.id.tvClock);
+        SimpleDateFormat forDate = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+        SimpleDateFormat forClock = new SimpleDateFormat("HH:mm");
+        String currentDate = forDate.format(new Date());
+        String currentClock = forClock.format(new Date());
+        textViewDate.setText(currentDate);
+        textViewClock.setText(currentClock);
+
+        //Greeting
+        TextView textViewGreeting = findViewById(R.id.tvGreeting);
+        SimpleDateFormat forGreeting = new SimpleDateFormat("H");
+        String currentGreeting = forGreeting.format(new Date());
+        int hour = Integer.parseInt(currentGreeting);
+
+        if (hour <= 11 && hour > 0 ){
+            textViewGreeting.setText("Good Morning!");
+        } else if (hour <= 14 && hour > 11 ){
+            textViewGreeting.setText("Good Day!");
+        } else if (hour <= 18 && hour >14){
+            textViewGreeting.setText("Good Afternoon!");
+        } else {
+            textViewGreeting.setText("Good Evening!");
+        }
     }
 
     @Override
@@ -36,4 +67,5 @@ public class MainActivity extends Activity implements View.OnClickListener{
             default:break;
         }
     }
+
 }

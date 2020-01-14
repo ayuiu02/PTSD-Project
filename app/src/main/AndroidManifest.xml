@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="app.ayuisnaini.android.ptsdproject">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,11 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ScreeningActivity"/>
+        <activity android:name=".DetailActivity">
+        </activity>
         <activity
             android:name=".ArticleActivity"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".ScreeningActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
