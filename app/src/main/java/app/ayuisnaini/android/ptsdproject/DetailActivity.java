@@ -1,5 +1,6 @@
 package app.ayuisnaini.android.ptsdproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
@@ -8,50 +9,53 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
 
+    TextView mTitle, mAuthor, mSummary, mDate;
+    ImageView mImage;
     Toolbar toolbar_art;
-    TextView postTitle, postAuthor, postSummary, postDate;
-    ImageView postImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        toolbar_art = findViewById(R.id.toolbar_article);
-        toolbar_art.setTitle("Article");
 
-        setSupportActionBar(toolbar_art);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setTitle("Article");
+        //actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayShowHomeEnabled(true);
 
-        postTitle = findViewById(R.id.dTitle);
-        postAuthor = findViewById(R.id.dAuthor);
-        postSummary = findViewById(R.id.dSummary);
-        postDate = findViewById(R.id.dDate);
-        postImage = findViewById(R.id.dImage);
+        //inisialisasi views
+        mTitle = findViewById(R.id.dTitle);
+        mAuthor = findViewById(R.id.dAuthor);
+        mSummary = findViewById(R.id.dSummary);
+        mDate = findViewById(R.id.dDate);
+        mImage = findViewById(R.id.dImage);
 
-        byte[] bytes = getIntent().getByteArrayExtra("image");
+        //get data dari intent
+        String getImage = getIntent().getStringExtra("image");
         String getTitle = getIntent().getStringExtra("title");
         String getAuthor = getIntent().getStringExtra("author");
         String getDate = getIntent().getStringExtra("date");
         String getSummary = getIntent().getStringExtra("summary");
-        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
-        postTitle.setText(getTitle);
-        postSummary.setText(getSummary);
-        postAuthor.setText(getAuthor);
-        postDate.setText(getDate);
-        postImage.setImageBitmap(bmp);
+        //set data di activity
+        mTitle.setText(getTitle);
+        mSummary.setText(getSummary);
+        mAuthor.setText(getAuthor);
+        mDate.setText(getDate);
+        Picasso.get().load(getImage).into(mImage);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
+    //@Override
+    //public boolean onSupportNavigateUp() {
+//        onBackPressed();
+//        return true;
+//    }
 }

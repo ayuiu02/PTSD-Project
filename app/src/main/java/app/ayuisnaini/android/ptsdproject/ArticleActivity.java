@@ -1,6 +1,5 @@
 package app.ayuisnaini.android.ptsdproject;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -13,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,32 +76,22 @@ public class ArticleActivity extends AppCompatActivity {
                     @Override
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                         ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-                        viewHolder.setOnClickListener(new ViewHolder.clickOnListener() {
+                        viewHolder.setOnClickListener(new ViewHolder.ClickListener(){
                             @Override
                             public void onItemClick(View view, int position) {
-                                TextView postTitle = view.findViewById(R.id.rTitle);
-                                TextView postAuthor = view.findViewById(R.id.rAuthor);
-                                TextView postSummary = view.findViewById(R.id.rSummary);
-                                TextView postDate = view.findViewById(R.id.rDate);
-                                ImageView postImage = view.findViewById(R.id.rImage);
-
-                                String Title = postTitle.getText().toString();
-                                String Author = postAuthor.getText().toString();
-                                String Summary = postSummary.getText().toString();
-                                String Date = postDate.getText().toString();
-                                Drawable drawable = postImage.getDrawable();
-                                Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+                                //get data from Firebase
+                                String Title = getItem(position).getTitle();
+                                String Author = getItem(position).getAuthor();
+                                String Summary = getItem(position).getSummary();
+                                String Date = getItem(position).getDate();
+                                String Image = getItem(position).getImage();
 
                                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                byte [] bytes = stream.toByteArray();
-
-                                intent.putExtra("image", bytes);
                                 intent.putExtra("title", Title);
                                 intent.putExtra("summary", Summary);
                                 intent.putExtra("date", Date);
                                 intent.putExtra("author", Author);
+                                intent.putExtra("image", Image);
 
                                 startActivity(intent);
                             }
@@ -116,7 +104,6 @@ public class ArticleActivity extends AppCompatActivity {
                         return viewHolder;
                     }
                 };
-
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
@@ -145,32 +132,22 @@ public class ArticleActivity extends AppCompatActivity {
                     @Override
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                         ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-                        viewHolder.setOnClickListener(new ViewHolder.clickOnListener() {
+                        viewHolder.setOnClickListener(new ViewHolder.ClickListener(){
                             @Override
                             public void onItemClick(View view, int position) {
-                                TextView postTitle = view.findViewById(R.id.rTitle);
-                                TextView postAuthor = view.findViewById(R.id.rAuthor);
-                                TextView postSummary = view.findViewById(R.id.rSummary);
-                                TextView postDate = view.findViewById(R.id.rDate);
-                                ImageView postImage = view.findViewById(R.id.rImage);
-
-                                String Title = postTitle.getText().toString();
-                                String Author = postAuthor.getText().toString();
-                                String Summary = postSummary.getText().toString();
-                                String Date = postDate.getText().toString();
-                                Drawable drawable = postImage.getDrawable();
-                                Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+                                //get data from Firebase
+                                String Title = getItem(position).getTitle();
+                                String Author = getItem(position).getAuthor();
+                                String Summary = getItem(position).getSummary();
+                                String Date = getItem(position).getDate();
+                                String Image = getItem(position).getImage();
 
                                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                byte [] bytes = stream.toByteArray();
-
-                                intent.putExtra("image", bytes);
                                 intent.putExtra("title", Title);
                                 intent.putExtra("summary", Summary);
                                 intent.putExtra("date", Date);
                                 intent.putExtra("author", Author);
+                                intent.putExtra("image", Image);
 
                                 startActivity(intent);
                             }

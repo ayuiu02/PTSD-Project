@@ -21,14 +21,14 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
             @Override
             public void onClick(View view) {
-                mClickOnListener.onItemClick(view, getAdapterPosition());
+                mClickListener.onItemClick(view, getAdapterPosition());
             }
         });
 
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                mClickOnListener.onItemLongClick(view, getAdapterPosition());
+                mClickListener.onItemLongClick(view, getAdapterPosition());
                 return true;
             }
         });
@@ -49,15 +49,14 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         Picasso.get().load(image).into(mImage);
     }
 
-    private ViewHolder.clickOnListener mClickOnListener;
+    private ViewHolder.ClickListener mClickListener;
 
-    public interface clickOnListener{
+    public interface ClickListener{
         void onItemClick (View view, int position);
         void onItemLongClick (View view, int position);
     }
-
-    public void setOnClickListener (ViewHolder.clickOnListener clickListener){
-        mClickOnListener = clickListener;
+    public void setOnClickListener (ViewHolder.ClickListener clickListener){
+        mClickListener = clickListener;
     }
 
 }

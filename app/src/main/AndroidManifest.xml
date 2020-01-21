@@ -13,13 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DetailActivity">
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".ArticleActivity">
         </activity>
         <activity
             android:name=".ArticleActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".ScreeningActivity" />
+        <activity
+            android:name=".ScreeningActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
