@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import androidx.appcompat.widget.Toolbar;
-
 import java.util.Objects;
+
+import androidx.appcompat.widget.Toolbar;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -26,10 +26,10 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.setTitle("Article");
-        //actionBar.setDisplayHomeAsUpEnabled(true);
-        //actionBar.setDisplayShowHomeEnabled(true);
+        toolbar_art = findViewById(R.id.toolbar_article);
+        toolbar_art.setTitle("Articles");
+        setSupportActionBar(toolbar_art);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         //inisialisasi views
         mTitle = findViewById(R.id.dTitle);

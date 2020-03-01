@@ -16,7 +16,7 @@ public class ScreeningActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screening);
 
-        toolbar_scr = findViewById(R.id.toolbar_article);
+        toolbar_scr = findViewById(R.id.toolbarScreening);
         toolbar_scr.setTitle("Screening");
         setSupportActionBar(toolbar_scr);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

@@ -1,84 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardBackgroundColor="#fff"
-    app:cardCornerRadius="3dp"
-    app:cardElevation="2dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="10dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    tools:context=".DetailActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArticleActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <include
+            layout="@layout/toolbar_article"
+            app:layout_constraintBottom_toTopOf="@+id/recycleView" />
+
+        <ImageView
+            android:id="@+id/dImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/toolbar_article"
+            android:adjustViewBounds="true"
+            android:background="@drawable/background"
+            android:scaleType="center"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:id="@+id/dTitle"
+            android:layout_below="@+id/dImage"
+            android:text="Ini Judul"/>
 
-            <TextView
-                android:id="@+id/dTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Title"
-                android:textColor="#000"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/dSummary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Summary"
-                android:textColor="#000"
-                android:textSize="18sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/dAuthor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Author"
-                android:textColor="#000080"
-                android:textSize="14sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/dDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="#000080"
-                android:textSize="14sp"
-                android:textStyle="normal" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:id="@+id/dAuthor"
+            android:layout_below="@+id/dTitle"
+            android:text="Ini Penulis"/>
 
-            <ImageView
-                android:id="@+id/dImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:background="@drawable/background"
-                android:scaleType="centerCrop" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dDate"
+            android:layout_below="@+id/dAuthor"
+            android:text="02 Januari 2020"/>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dSummary"
+            android:layout_below="@+id/dDate"
+            android:text="Ini isi article"/>
 
+    </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</ScrollView>
