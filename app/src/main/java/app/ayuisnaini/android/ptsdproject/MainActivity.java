@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,15 +28,32 @@ public class MainActivity extends Activity implements View.OnClickListener{
         articleCard.setOnClickListener(this);
         screeningCard.setOnClickListener(this);
 
-        //Date and clock
-        TextView textViewDate = findViewById(R.id.tvDate);
-        TextView textViewClock = findViewById(R.id.tvClock);
-        SimpleDateFormat forDate = new SimpleDateFormat("EEEE, dd MMMM yyyy");
-        SimpleDateFormat forClock = new SimpleDateFormat("HH:mm");
-        String currentDate = forDate.format(new Date());
-        String currentClock = forClock.format(new Date());
-        textViewDate.setText(currentDate);
-        textViewClock.setText(currentClock);
+        Thread t = new Thread(){
+            @Override
+            public void run(){
+                try{
+                    while (!isInterrupted()){
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView textViewDate = findViewById(R.id.tvDate);
+                                TextView textViewClock = findViewById(R.id.tvClock);
+                                long date = System .currentTimeMillis();
+                                SimpleDateFormat forDate = new SimpleDateFormat("EEEE, dd MMMM yyyy");
+                                SimpleDateFormat forClock = new SimpleDateFormat("HH:mm");
+                                String currentDate = forDate.format(new Date());
+                                String currentClock = forClock.format(new Date());
+                                textViewDate.setText(currentDate);
+                                textViewClock.setText(currentClock);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e){}
+            }
+        };
+
+        t.start();
 
         //Greeting
         TextView textViewGreeting = findViewById(R.id.tvGreeting);
