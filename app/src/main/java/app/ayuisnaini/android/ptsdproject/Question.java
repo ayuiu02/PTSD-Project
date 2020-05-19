@@ -8,11 +8,13 @@ public class Question {
     String optYes;
     String optNo;
     Integer valueYes;
+    String group;
 
-    public Question(String textQuestion, String optYes, String optNo, Integer valueYes) {
+    public Question(String textQuestion, String optYes, String optNo, String group, Integer valueYes) {
         this.textQuestion = textQuestion;
         this.optYes = optYes;
         this.optNo = optNo;
+        this.group = group;
         this.valueYes = valueYes;
     }
 
@@ -46,5 +48,13 @@ public class Question {
 
     public void setValueYes(Integer valueYes) {
         this.valueYes = valueYes;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }

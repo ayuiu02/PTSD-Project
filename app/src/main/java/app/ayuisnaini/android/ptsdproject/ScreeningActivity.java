@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -30,8 +31,9 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
     private TextView textQuestion, countQuestion;
     private Button optYes, optNo;
     private List<Question> questionList;
-    private int numQuestion;
+    private int numQuestion, totalA, totalB,totalC, totalD, totalE;
     private FirebaseFirestore firestore;
+    ArrayList<Integer> arrayDS = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
         firestore = FirebaseFirestore.getInstance();
         
         getQuestionList();
+
+        Log.d("Array", "dataValue");
     }
 
     private void getQuestionList() {
@@ -70,6 +74,7 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
                         questionList.add(new Question(doc.getString("textQuestion"),
                                 doc.getString("optYes"),
                                 doc.getString("optNo"),
+                                doc.getString("group"),
                                 Integer.valueOf(doc.getString("valueYes"))
                         ));
                     }
@@ -85,23 +90,42 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setQuestion() {
-        textQuestion.setText(questionList.get(0).getTextQuestion());
-        optYes.setText(questionList.get(0).getOptYes());
-        optNo.setText(questionList.get(0).getOptNo());
+        numQuestion = 0;
+
+        textQuestion.setText(questionList.get(numQuestion).getTextQuestion());
+        optYes.setText(questionList.get(numQuestion).getOptYes());
+        optNo.setText(questionList.get(numQuestion).getOptNo());
 
         countQuestion.setText(String.valueOf(1) + "/" + String.valueOf(questionList.size()));
-
-        numQuestion = 0;
     }
 
     @Override
     public void onClick(View v) {
+        int tempA = 0;
+        int tempB = 0;
+        int tempC = 0;
+        int tempD = 0;
+        int tempE = 0;
 
         switch (v.getId()){
             case R.id.btnYes:
+                    arrayDS.add(questionList.get(numQuestion).getValueYes());
+                    if (questionList.get(numQuestion).getGroup() == "A"){
+                        totalA = tempA + questionList.get(numQuestion).getValueYes();
+                    } else if (questionList.get(numQuestion).getGroup() == "B"){
+                        totalB = tempB + questionList.get(numQuestion).getValueYes();
+                    } else if (questionList.get(numQuestion).getGroup() == "C"){
+                        totalC = tempC + questionList.get(numQuestion).getValueYes();
+                    } else if (questionList.get(numQuestion).getGroup() == "D"){
+                        totalD = tempD + questionList.get(numQuestion).getValueYes();
+                    } else {
+                        totalE = tempE + questionList.get(numQuestion).getValueYes();
+                    }
                 break;
+
             case R.id.btnNo:
                 break;
+
             default:
         }
 
