@@ -113,9 +113,9 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
             numQuestion++;
 
-            playAnimationTrans(textQuestion, 0, 0);
-            playAnimationTrans(optYes, 0, 1);
-            playAnimationTrans(optNo, 0, 2);
+            textQuestion.setText(questionList.get(numQuestion).getTextQuestion());
+            optYes.setText(questionList.get(numQuestion).getOptYes());
+            optNo.setText(questionList.get(numQuestion).getOptNo());
 
             countQuestion.setText(String.valueOf(numQuestion+1) + "/" + String.valueOf(questionList.size()));
 
@@ -128,43 +128,4 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void playAnimationTrans(final View view, final int value, final int viewNum) {
-        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
-                .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
-                .setListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        if (value == 0){
-                            switch (viewNum){
-                                case 0:
-                                    ((TextView)view).setText(questionList.get(numQuestion).getTextQuestion());
-                                    break;
-                                case 1:
-                                    ((Button)view).setText(questionList.get(numQuestion).getOptYes());
-                                    break;
-                                case 2:
-                                    ((Button)view).setText(questionList.get(numQuestion).getOptNo());
-                                    break;
-                            }
-
-                            playAnimationTrans(view, 1, viewNum);
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
-    }
 }

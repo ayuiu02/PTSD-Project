@@ -177,5 +177,5 @@ public class ArticleActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
-}
+    }
 }
