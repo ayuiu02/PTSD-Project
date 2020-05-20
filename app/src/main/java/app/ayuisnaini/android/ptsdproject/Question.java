@@ -1,14 +1,12 @@
 package app.ayuisnaini.android.ptsdproject;
 
-import android.content.Intent;
-
 public class Question {
 
-    String textQuestion;
-    String optYes;
-    String optNo;
-    Integer valueYes;
-    String group;
+    private String textQuestion;
+    private String optYes;
+    private String optNo;
+    private Integer valueYes;
+    private String group;
 
     public Question(String textQuestion, String optYes, String optNo, String group, Integer valueYes) {
         this.textQuestion = textQuestion;

@@ -3,12 +3,10 @@ package app.ayuisnaini.android.ptsdproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +29,10 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
     private TextView textQuestion, countQuestion;
     private Button optYes, optNo;
     private List<Question> questionList;
-    private int numQuestion, totalA, totalB,totalC, totalD, totalE;
+    private int numQuestion;
     private FirebaseFirestore firestore;
-    ArrayList<Integer> arrayDS = new ArrayList<>();
+    private static ArrayList<Integer> arrayDS = new ArrayList<>();
+    private static ArrayList<Integer> arrayFT = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +55,6 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
         firestore = FirebaseFirestore.getInstance();
         
         getQuestionList();
-
-        Log.d("Array", "dataValue");
     }
 
     private void getQuestionList() {
@@ -101,35 +98,22 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        int tempA = 0;
-        int tempB = 0;
-        int tempC = 0;
-        int tempD = 0;
-        int tempE = 0;
-
         switch (v.getId()){
             case R.id.btnYes:
-                    arrayDS.add(questionList.get(numQuestion).getValueYes());
-                    if (questionList.get(numQuestion).getGroup() == "A"){
-                        totalA = tempA + questionList.get(numQuestion).getValueYes();
-                    } else if (questionList.get(numQuestion).getGroup() == "B"){
-                        totalB = tempB + questionList.get(numQuestion).getValueYes();
-                    } else if (questionList.get(numQuestion).getGroup() == "C"){
-                        totalC = tempC + questionList.get(numQuestion).getValueYes();
-                    } else if (questionList.get(numQuestion).getGroup() == "D"){
-                        totalD = tempD + questionList.get(numQuestion).getValueYes();
-                    } else {
-                        totalE = tempE + questionList.get(numQuestion).getValueYes();
-                    }
+                arrayDS.add(questionList.get(numQuestion).getValueYes());
+                arrayFT.add(questionList.get(numQuestion).getValueYes());
                 break;
 
             case R.id.btnNo:
+                arrayFT.add(0);
                 break;
 
             default:
         }
 
         changeQuestion();
+        Log.d("ArrayDS", String.valueOf(arrayDS));
+        Log.d("ArrayFT", String.valueOf(arrayFT));
     }
 
     private void changeQuestion() {
@@ -141,7 +125,7 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
             optYes.setText(questionList.get(numQuestion).getOptYes());
             optNo.setText(questionList.get(numQuestion).getOptNo());
 
-            countQuestion.setText(String.valueOf(numQuestion+1) + "/" + String.valueOf(questionList.size()));
+            countQuestion.setText(String.valueOf(numQuestion + 1) + "/" + String.valueOf(questionList.size()));
 
         } else {
 
@@ -150,6 +134,14 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
             ScreeningActivity.this.finish();
 
         }
+    }
+
+    public static ArrayList<Integer> returnDataDS(){
+        return (arrayDS);
+    }
+
+    public static ArrayList<Integer> returnDataFT(){
+        return (arrayFT);
     }
 
 }
