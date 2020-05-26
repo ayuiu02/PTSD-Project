@@ -5,10 +5,10 @@ public class Question {
     private String textQuestion;
     private String optYes;
     private String optNo;
-    private Integer valueYes;
+    private Double valueYes;
     private String group;
 
-    public Question(String textQuestion, String optYes, String optNo, String group, Integer valueYes) {
+    public Question(String textQuestion, String optYes, String optNo, String group, Double valueYes) {
         this.textQuestion = textQuestion;
         this.optYes = optYes;
         this.optNo = optNo;
@@ -40,11 +40,11 @@ public class Question {
         this.optNo = optNo;
     }
 
-    public Integer getValueYes() {
+    public Double getValueYes() {
         return valueYes;
     }
 
-    public void setValueYes(Integer valueYes) {
+    public void setValueYes(Double valueYes) {
         this.valueYes = valueYes;
     }
 

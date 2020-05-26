@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                             public void run() {
                                 TextView textViewDate = findViewById(R.id.tvDate);
                                 TextView textViewClock = findViewById(R.id.tvClock);
-                                long date = System .currentTimeMillis();
+//                                long date = System .currentTimeMillis();
                                 SimpleDateFormat forDate = new SimpleDateFormat("EEEE, dd MMMM yyyy");
                                 SimpleDateFormat forClock = new SimpleDateFormat("HH:mm");
                                 String currentDate = forDate.format(new Date());

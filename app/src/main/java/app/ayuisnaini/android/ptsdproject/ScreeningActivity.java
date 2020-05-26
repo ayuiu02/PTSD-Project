@@ -31,8 +31,8 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
     private List<Question> questionList;
     private int numQuestion;
     private FirebaseFirestore firestore;
-    private static ArrayList<Integer> arrayDS = new ArrayList<>();
-    private static ArrayList<Integer> arrayFT = new ArrayList<>();
+    private static ArrayList<Double> arrayDS = new ArrayList<>();
+    private static ArrayList<Double> arrayFT = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
                                 doc.getString("optYes"),
                                 doc.getString("optNo"),
                                 doc.getString("group"),
-                                Integer.valueOf(doc.getString("valueYes"))
+                                Double.valueOf(doc.getString("valueYes"))
                         ));
                     }
 
@@ -105,7 +105,7 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case R.id.btnNo:
-                arrayFT.add(0);
+                arrayFT.add(0.0);
                 break;
 
             default:
@@ -129,18 +129,20 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
         } else {
 
-            Intent intent = new Intent(ScreeningActivity.this, ResultActivity.class);
-            startActivity(intent);
-            ScreeningActivity.this.finish();
+            Intent intentMove = new Intent(this, ResultActivity.class);
+            startActivity(intentMove);
+//            Intent intent = new Intent(ScreeningActivity.this, ResultActivity.class);
+//            startActivity(intent);
+//            ScreeningActivity.this.finish();
 
         }
     }
 
-    public static ArrayList<Integer> returnDataDS(){
+    public static ArrayList<Double> returnDataDS(){
         return (arrayDS);
     }
 
-    public static ArrayList<Integer> returnDataFT(){
+    public static ArrayList<Double> returnDataFT(){
         return (arrayFT);
     }
 
