@@ -41,8 +41,8 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
         toolbar_scr = findViewById(R.id.toolbarScreening);
         toolbar_scr.setTitle("Screening");
-        setSupportActionBar(toolbar_scr);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(toolbar_scr);
+//        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         countQuestion = findViewById(R.id.qNumber);
         textQuestion = findViewById(R.id.qText);
@@ -131,9 +131,6 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
             Intent intentMove = new Intent(this, ResultActivity.class);
             startActivity(intentMove);
-//            Intent intent = new Intent(ScreeningActivity.this, ResultActivity.class);
-//            startActivity(intent);
-//            ScreeningActivity.this.finish();
 
         }
     }

@@ -11,13 +11,19 @@ public class DempsterShafer {
     }
 
     public static double screeningDS(){
-        double temp = 0;
-        temp = inferensiDS(arrayDS.get(0), arrayDS.get(1));
-        for (int i = 2; i < arrayDS.size(); i++){
-            temp = inferensiDS(temp, arrayDS.get(i));
-        }
+        double hasilDS;
+        if (arrayDS.size() <= 1){
+            hasilDS = 0;
+            return hasilDS;
+        } else {
+            double temp = 0;
+            temp = inferensiDS(arrayDS.get(0), arrayDS.get(1));
+            for (int i = 2; i < arrayDS.size(); i++){
+                temp = inferensiDS(temp, arrayDS.get(i));
+            }
 
-        double hasilDS = temp * 100;
-        return hasilDS;
+            hasilDS = temp * 100;
+            return hasilDS;
+        }
     }
 }
