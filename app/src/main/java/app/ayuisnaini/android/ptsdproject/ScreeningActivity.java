@@ -21,7 +21,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ScreeningActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,6 +42,9 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
         toolbar_scr.setTitle("Screening");
 //        setSupportActionBar(toolbar_scr);
 //        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        arrayDS.clear();
+        arrayFT.clear();
 
         countQuestion = findViewById(R.id.qNumber);
         textQuestion = findViewById(R.id.qText);
@@ -131,6 +133,7 @@ public class ScreeningActivity extends AppCompatActivity implements View.OnClick
 
             Intent intentMove = new Intent(this, ResultActivity.class);
             startActivity(intentMove);
+            finish();
 
         }
     }

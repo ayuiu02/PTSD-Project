@@ -15,7 +15,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".ResultActivity"
-            android:parentActivityName=".ScreeningActivity"></activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".DetailActivity"
             android:parentActivityName=".ArticleActivity"></activity>

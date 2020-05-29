@@ -1,5 +1,7 @@
 package app.ayuisnaini.android.ptsdproject;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class DempsterShafer {
@@ -11,6 +13,7 @@ public class DempsterShafer {
     }
 
     public static double screeningDS(){
+        Log.d("getDS", String.valueOf(arrayDS));
         double hasilDS;
         if (arrayDS.size() <= 1){
             hasilDS = 0;
@@ -25,5 +28,6 @@ public class DempsterShafer {
             hasilDS = temp * 100;
             return hasilDS;
         }
+
     }
 }
