@@ -27,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         toolbar_art = findViewById(R.id.toolbar_article);
-        toolbar_art.setTitle("Articles");
+        toolbar_art.setTitle("Artikel");
         setSupportActionBar(toolbar_art);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 

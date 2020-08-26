@@ -16,7 +16,7 @@ import androidx.cardview.widget.CardView;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    private CardView articleCard, screeningCard;
+    private CardView articleCard, screeningCard, infoCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +24,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_main);
         articleCard = findViewById(R.id.article);
         screeningCard = findViewById(R.id.screening);
+        infoCard = findViewById(R.id.info);
 
         articleCard.setOnClickListener(this);
         screeningCard.setOnClickListener(this);
+        infoCard.setOnClickListener(this);
 
         Thread t = new Thread(){
             @Override
@@ -62,13 +64,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
         int hour = Integer.parseInt(currentGreeting);
 
         if (hour <= 11 && hour > 0 ){
-            textViewGreeting.setText("Good Morning!");
+            textViewGreeting.setText("Selamat Pagi!");
         } else if (hour <= 14 && hour > 11 ){
-            textViewGreeting.setText("Good Day!");
+            textViewGreeting.setText("Selamat Siang!");
         } else if (hour <= 18 && hour >14){
-            textViewGreeting.setText("Good Afternoon!");
+            textViewGreeting.setText("Selamat Sore!");
         } else {
-            textViewGreeting.setText("Good Evening!");
+            textViewGreeting.setText("Selamat Malam!");
         }
     }
 
@@ -81,6 +83,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
             break;
 
             case R.id.screening : i = new Intent(this, ScreeningActivity.class); startActivity(i);
+            break;
+
+            case R.id.info : i = new Intent(this, info.class); startActivity(i);
             break;
 
             default:break;

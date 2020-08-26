@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">PTSD Project</string>
-    <string name="article">Article</string>
-    <string name="screening">Screening</string>
+    <string name="article">Baca\nArtikel</string>
+    <string name="screening">Mulai\nScreening</string>
     <string name="home">Home</string>
+    <string name="quote">Terima kasih telah berusaha dan terus berjuang hingga hari ini, Anda luar biasa! :)</string>
+    <string name="tentang">Projek ini dibuat untuk memenuhi syarat tugas akhir di jurusan Teknik Informatika UIN Sunan Gunung Djati.
+        Tujuan dibuatnya projek ini adalah untuk mengetahui perbandingan kinerja dari algoritma FUzzy Tsukamoto dan Dempster Shafer dalam sistem screening PTSD.</string>
 
 </resources>

@@ -15,7 +15,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
     private static double hasilDS = DempsterShafer.screeningDS();
     private static double hasilFT = FuzzyTsukamoto.screeningFT();
-    TextView resultDS, resultFT;
+    TextView resultDS, resultFT, recoDS, recoFT;
     Button backHome;
 
     @Override
@@ -25,6 +25,8 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
         resultDS = findViewById(R.id.hasilScreeningDS);
         resultFT = findViewById(R.id.hasilScreeningFT);
+        recoDS = findViewById(R.id.recoScreeningDS);
+        recoFT = findViewById(R.id.recoScreeningFT);
         backHome = findViewById(R.id.backHome);
 
         backHome.setOnClickListener(this);
@@ -33,6 +35,18 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
         String nilaiDS = String.valueOf(df.format(hasilDS));
         String nilaiFT = String.valueOf(df.format(hasilFT));
+
+        if (hasilDS < 52) {
+            recoDS.setText("Berdasarkan hasil tes, kami tidak mendeteksi adanya gejala PTSD");
+        } else {
+            recoDS.setText("Berdasarkan hasil tes, kami menyarankan Anda untuk segera melakukan diagnosa lanjutan bersama tenaga profesional");
+        }
+
+        if (hasilFT < 52) {
+            recoFT.setText("Berdasarkan hasil tes, kami tidak mendeteksi adanya gejala PTSD");
+        } else {
+            recoFT.setText("Berdasarkan hasil tes, kami menyarankan Anda untuk segera melakukan diagnosa lanjutan bersama tenaga profesional");
+        }
 
         resultDS.setText(nilaiDS);
         resultFT.setText(nilaiFT);

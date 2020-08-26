@@ -16,41 +16,63 @@
 
         <ImageView
             android:id="@+id/dImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_below="@+id/toolbar_article"
             android:adjustViewBounds="true"
             android:background="@drawable/background"
-            android:scaleType="center"
-            android:layout_marginTop="8dp"/>
+            android:scaleType="fitXY"
+            android:layout_margin="8dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dTitle"
             android:layout_below="@+id/dImage"
-            android:text="Ini Judul"/>
+            android:text="Ini Judul"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dAuthor"
+            android:orientation="horizontal"
+            android:id="@+id/linearLay"
             android:layout_below="@+id/dTitle"
-            android:text="Ini Penulis"/>
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dAuthor"
+                android:text="Ini Penulis"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dDate"
-            android:layout_below="@+id/dAuthor"
-            android:text="02 Januari 2020"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="|"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dDate"
+                android:text="02 Januari 2020"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dSummary"
-            android:layout_below="@+id/dDate"
-            android:text="Ini isi article"/>
+            android:layout_below="@+id/linearLay"
+            android:text="Ini isi article"
+            android:layout_margin="8dp"/>
 
     </RelativeLayout>
 
